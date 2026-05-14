@@ -117,3 +117,14 @@ npm run dev
 Frontend will run on:
 
 http://localhost:3000
+
+
+----------Credential -------------------
+
+========OPS=========
+Email - ops@demo.com
+Password - ops123
+
+=======FINANCE=========
+Email - finance@demo.com
+Password - fin123
