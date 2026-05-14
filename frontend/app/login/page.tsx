@@ -8,10 +8,12 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const login = async () => {
     try {
+      setLoading(true); 
       const res = await API.post("/auth/login", { email, password });
 
       localStorage.setItem("token", res.data.token);
@@ -20,6 +22,7 @@ export default function Login() {
       localStorage.setItem("role", payload.role);
 
       router.push("/dashboard");
+      setLoading(false);
     } catch (e) {
       setErr("Invalid credentials");
     }
@@ -45,7 +48,7 @@ export default function Login() {
           className="bg-blue-500 text-white mt-3 w-full"
           onClick={login}
         >
-          Login
+          {loading ? "Logging you in..." : "Login"}
         </button>
 
         {err && <p className="text-red-500 mt-2">{err}</p>}
